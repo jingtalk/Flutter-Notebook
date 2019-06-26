@@ -56,10 +56,10 @@ class _HomeScreenState extends State<HomeScreen>
                     ),
                   ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       animationController.forward();
                     },
-                    onDoubleTap: (){
+                    onDoubleTap: () {
                       animationController.reverse();
                     },
                     child: Center(
@@ -68,7 +68,8 @@ class _HomeScreenState extends State<HomeScreen>
                         alignment: Alignment.bottomCenter,
                         width: 200.0,
                         height: 80.0,
-                        transform: Matrix4.translationValues(0.0, animation.value * width, 0.0),
+                        transform: Matrix4.translationValues(
+                            0.0, animation.value * width, 0.0),
                       ),
                     ),
                   )

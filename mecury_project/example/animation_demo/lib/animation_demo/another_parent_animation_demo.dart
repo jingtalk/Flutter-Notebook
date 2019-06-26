@@ -23,7 +23,8 @@ class HomeScreenState extends State<HomeScreen>
         CurvedAnimation(parent: animationController, curve: Curves.easeIn));
     childAnimation = Tween(begin: 0.0, end: 100.0).animate(
         CurvedAnimation(parent: animationController, curve: Curves.easeIn));
-    animationController.forward();
+//    animationController.forward();
+    animationController.repeat();
     super.initState();
   }
 

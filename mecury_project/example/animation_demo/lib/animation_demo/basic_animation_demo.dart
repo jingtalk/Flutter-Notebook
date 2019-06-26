@@ -11,11 +11,27 @@ class HomeScreen extends StatefulWidget {
 
 class HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
-  TextEditingController _nameController,_pwController;
+  TextEditingController _nameController, _pwController;
 
+  /// Animation是一个抽象类，它用于保存动画的插值和状态；
+  /// Animation对象的输出值可以是线性的、曲线的、一个步进函数或者任何其他曲线函数。
+  /// 可以通过Animation对象的value属性获取动画的当前值。
+  /// addListener() 可以给Animation添加帧监听器，在每一帧都会被调用。主要用于UI重建
+  /// addStatusListener()可以给Animation添加“动画状态改变”监听器；
   Animation _animation;
+
+  /// AnimationController用于控制动画，它包含动画的启动forward()、停止stop() 、反向播放 reverse()等方法。
   AnimationController _animationController;
 
+  /// Flutter中通过Curve（曲线）来描述动画过程，Curve可以是线性的(Curves.linear)，也可以是非线性的。
+  /// CurvedAnimation 将动画过程定义为一个非线性曲线. 支持自定义。
+  ///
+  /// Tween的唯一职责就是定义从输入范围到输出范围的映射。
+  /// Tween构造函数需要begin和end两个参数。支持自定义。
+  /// 要使用Tween对象，需要调用其animate()方法，然后传入一个控制器对象。
+  ///
+  /// 创建一个AnimationController时，需要传递一个vsync参数，它接收一个TickerProvider类型的对象，它的主要职责是创建Ticker。
+  /// 用于获取屏幕刷新的回调
   @override
   void initState() {
     _nameController = TextEditingController();
@@ -38,6 +54,7 @@ class HomeScreenState extends State<HomeScreen>
     super.dispose();
   }
 
+  ///
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
@@ -90,10 +107,7 @@ class HomeScreenState extends State<HomeScreen>
           controller: controller,
           obscureText: obscureText,
           decoration: InputDecoration(
-              filled: true,
-            labelText: labelText,
-              fillColor: Colors.white
-          ),
+              filled: true, labelText: labelText, fillColor: Colors.white),
         ),
       ),
     );

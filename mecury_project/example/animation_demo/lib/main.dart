@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 //import 'package:animation_demo/animation_demo/delayed_animation_demo.dart';
 //import 'package:animation_demo/animation_demo/parent_animation_demo.dart';
 //import 'package:animation_demo/animation_demo/another_parent_animation_demo.dart';
-import 'package:animation_demo/animation_demo/transforming_animation_demo.dart';
+//import 'package:animation_demo/animation_demo/transforming_animation_demo.dart';
 //import 'package:animation_demo/animation_demo/value_change_animation_demo.dart';
-//import 'package:animation_demo/animation_demo/hidden_widget_animation_demo.dart';
+import 'package:animation_demo/animation_demo/hidden_widget_animation_demo.dart';
 
 void main() => runApp(new MyApp());
 

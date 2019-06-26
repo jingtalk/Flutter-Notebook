@@ -9,18 +9,24 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin{
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
   AnimationController animationController;
   Animation animation;
 
   @override
   void initState() {
-    animationController = AnimationController(vsync: this,duration:Duration(seconds: 5));
+    animationController =
+        AnimationController(vsync: this, duration: Duration(seconds: 5));
+
+    /// controls the roundness of the square’s corners
     animation = BorderRadiusTween(
-        begin:BorderRadius.circular(0.0),
-        end: BorderRadius.circular(120.0)
-    ).animate(CurvedAnimation(parent: animationController, curve: Curves.ease));
+            begin: BorderRadius.circular(0.0),
+            end: BorderRadius.circular(120.0))
+        .animate(
+            CurvedAnimation(parent: animationController, curve: Curves.ease));
     animationController.repeat();
+//    animationController.forward();
     super.initState();
   }
 
@@ -35,19 +41,19 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     return Scaffold(
       body: Container(
         color: Colors.amber,
-        child: AnimatedBuilder(animation: animationController, builder: (BuildContext context, Widget child){
-          return Center(
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: animation.value,
-                color: Colors.blue
-              ),
-              width: 200.0,
-              height: 200.0,
-              child: Text(animation.value.toString()),
-            ),
-          );
-        }),
+        child: AnimatedBuilder(
+            animation: animationController,
+            builder: (BuildContext context, Widget child) {
+              return Center(
+                child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: animation.value, color: Colors.blue),
+                  width: 200.0,
+                  height: 200.0,
+                  child: Text(animation.value.toString()),  /// 显示文案
+                ),
+              );
+            }),
       ),
     );
   }

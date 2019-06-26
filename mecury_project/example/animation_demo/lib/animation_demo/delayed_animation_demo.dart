@@ -20,10 +20,16 @@ class HomeScreenState extends State<HomeScreen>
   void initState() {
     _nameController = TextEditingController();
     _pwController = TextEditingController();
+
+    /// 共用一个 AnimationController
     _animationController = AnimationController(
         vsync: this, duration: Duration(seconds: 2, milliseconds: 50));
+
+    /// 交错动画
+    /// 我们可以给不同动画指定起始点和终止点来决定它们的开始时间和终止时间。
     _animationTitle = Tween(begin: -1.0, end: 0.0).animate(CurvedAnimation(
-        parent: _animationController, curve: Curves.fastOutSlowIn));
+        parent: _animationController,
+        curve: Curves.fastOutSlowIn));
     _animationTextField = Tween(begin: -1.0, end: 0.0).animate(CurvedAnimation(
         parent: _animationController,
         curve: Interval(0.4, 1.0, curve: Curves.fastOutSlowIn)));
@@ -31,6 +37,7 @@ class HomeScreenState extends State<HomeScreen>
         parent: _animationController,
         curve: Interval(0.6, 1.0, curve: Curves.fastOutSlowIn)));
     _animationController.forward();
+
 //    _animationController.repeat();
     super.initState();
   }

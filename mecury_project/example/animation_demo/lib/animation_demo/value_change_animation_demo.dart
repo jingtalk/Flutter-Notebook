@@ -9,15 +9,20 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin{
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
   AnimationController animationController;
   Animation animation;
 
   @override
   void initState() {
-    animationController = AnimationController(vsync: this, duration: Duration(seconds: 3));
-    animation = IntTween(begin: 5,end: 0).animate(CurvedAnimation(parent: animationController, curve: Curves.ease));
-    animationController.forward();
+    animationController =
+        AnimationController(vsync: this, duration: Duration(seconds: 5));
+
+    animation = IntTween(begin: 5, end: 0).animate(
+        CurvedAnimation(parent: animationController, curve: Curves.ease));
+//    animationController.forward();
+    animationController.repeat();
     super.initState();
   }
 
@@ -29,10 +34,18 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("Waiting ...",style: TextStyle(fontSize: textSize),),
-            AnimatedBuilder(animation: animationController, builder: (BuildContext context ,Widget child){
-              return Text(animation.value.toString(),style: TextStyle(fontSize: textSize),);
-            })
+            Text(
+              "Waiting ...",
+              style: TextStyle(fontSize: textSize),
+            ),
+            AnimatedBuilder(
+                animation: animationController,
+                builder: (BuildContext context, Widget child) {
+                  return Text(
+                    animation.value.toString(),
+                    style: TextStyle(fontSize: textSize),
+                  );
+                })
           ],
         ),
       ),
